@@ -29,9 +29,8 @@ public class GraphQLController {
     graphql = aGraphQL;
   }
   
-  @PostMapping(value="/graphql",consumes="application/json")
+  @PostMapping(value="/graphql", consumes="application/json", produces="application/json")
   public ExecutionResult graphql (@RequestBody Map<String,Object> aQuery) {
-    
     long now = System.currentTimeMillis();
     
     ExecutionResult result = graphql.execute(ExecutionInput.newExecutionInput()
