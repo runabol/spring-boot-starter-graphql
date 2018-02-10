@@ -24,7 +24,16 @@ GET /movies?q=big
     "title":"Big",
     "synopsis":"After a wish turns 12-year-old Josh Baskin into a 30-year-old man...",
     "duration":"1h44m",
-    "poster":"http://...",
+    "images":[{
+       "type":"thumbnail",
+       "url":"http://...",
+       "resolution":"150x200"
+    },
+    {
+       "type":"full",
+       "url":"http://...",
+       "resolution":"1920x1080"
+    }],
     "genres":[...],
     "cast":[
         {
@@ -39,7 +48,16 @@ GET /movies?q=big
     "title":"The Big Lebowski",
     "synopsis":"Jeff Bridges plays Jeff Lebowski who insists on being called "the Dude,"...",
     "duration":"1h57m",
-    "poster":"http://...",
+    "images":[{
+       "type":"thumbnail",
+       "url":"http://...",
+       "resolution":"150x200"
+    },
+    {
+       "type":"full",
+       "url":"http://...",
+       "resolution":"1920x1080"
+    }],
     "genres":[...],
     "cast":[
         {
@@ -73,8 +91,11 @@ POST /graphql
 
 {
    getAllMovies {
-      id
-      title
+      id        // this is a field
+      title,
+      image(type:"thumbnail") {  // fields can be nested
+         url
+      }
    }
 }
 ```
@@ -84,12 +105,18 @@ POST /graphql
 
   {
     "id":"1",
-    "title":"Big"
+    "title":"Big",
+    "image:{
+      "url":"http://..."
+    }
   },
   
   {
     "id":"2",
     "title":"The Big Lebowski",
+    "image:{
+      "url":"http://..."
+    }
   }
 ]
 ```
