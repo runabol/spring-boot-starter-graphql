@@ -106,7 +106,7 @@ What just happened?
 
 GraphQL has many more advantages and features but I hope that this gives you a good sense of what's possible with GraphQL.
 
-For more information check out the offical (GraphQL)[http://graphql.org/] website.
+For more information check out the offical [GraphQL](http://graphql.org/) website.
 
 # Usage
 
