@@ -138,8 +138,8 @@ Add the `spring-boot-starter-graphql` dependency to your Spring Boot app:
 
 `spring-boot-starter-graphql` comes with a built-in `ping` query to test that everything is fine:
 
-```
-curl -X POST -H "Content-Type:application/json" -d '{"query":"{ping}"}' http://localhost:8080/graphql
+``` 
+curl -X POST -H "Content-Type:application/json" -d '{"query":"{ ping }"}' http://localhost:8080/graphql
 ```
 
 # Your first GraphQL Query
@@ -150,10 +150,21 @@ public class HelloWorld implements QueryBuilder {
 
   @Override
   public void build (Builder aBuilder) {
-    aBuilder.field(Fields.field("hi")
-                         .type(Scalars.GraphQLString)
-                         .staticValue("Hello World"));
+kou8
   }
 
 }
 ```
+
+# Your second GraphQL query
+
+TBD
+
+# Mutations
+
+TBD
+
+# Subscriptions
+
+TBD
+
