@@ -216,8 +216,8 @@ public class GetAllMoviesQuery implements QueryBuilder {
   @Override
   public void build (Builder aBuilder) {
     aBuilder.field(Fields.field("getAllMovies")
-                         .type(Types.list(Movie.REF))
-                         .argument(Arguments.stringArgument("q"))
+                         .type(Types.list(Movie.REF)) // query result type
+                         .argument(Arguments.stringArgument("q")) // query arguments
                          .dataFetcher((env) -> {
                            
                            // in the real-world you would probably 
@@ -251,6 +251,7 @@ public class Movie implements TypeBuilder {
   public GraphQLType build () {
     return Types.objectTypeBuilder()
                 .name(NAME)
+                .field(Fields.notNull(Fields.stringField("id")))
                 .field(Fields.stringField("title"))
                 .field(Fields.stringField("synopsis"))
                 .field(Fields.stringField("duration"))
@@ -289,11 +290,54 @@ $ curl -s -X POST -H "Content-Type:application/json" -d '{"query":"{ getAllMovie
 }
 ```
 
-
-
 # Mutations
 
-TBD
+So far we looked at reading data from the API. Mutations are GraphQL's approach to writing data.
+
+```
+@Component
+public class AddMovie implements MutationBuilder {
+
+  @Override
+  public void build (Builder aBuilder) {
+    aBuilder.field(Fields.field("addMovie")
+                         .argument(Arguments.notNull(Arguments.stringArgument("title")))
+                         .argument(Arguments.stringArgument("synopsis"))
+                         .argument(Arguments.stringArgument("duration"))
+                         .type(Movie.REF)
+                         .dataFetcher((env) -> {
+                           Map<String,Object> record = new HashMap<>();
+                           
+                           record.put("id", UUID.randomUUID().toString().replace("-",""));
+                           record.put("title", env.getArgument("title"));
+                           record.put("synopsis", env.getArgument("synopsis"));
+                           record.put("duration", env.getArgument("duration"));
+                           
+                           // save the the database
+                           
+                           return record;
+                         }));
+  }
+
+}
+```
+
+```
+$ curl -s -X POST -H "Content-Type:application/json" -d '{"query":"mutation { addMovie (title:\"Big Fish\") { id title } }"}' http://localhost:8080/graphql
+
+{
+  "data": {
+    "addMovie": {
+      "id": "8294094ebb034c7f82ef1170b95f69b0",
+      "title": "Big Fish"
+    }
+  },
+  "errors": [],
+  "extensions": null
+}
+```
+
+
 
 # Subscriptions
 
