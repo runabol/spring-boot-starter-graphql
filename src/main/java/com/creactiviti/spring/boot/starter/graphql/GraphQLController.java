@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import graphql.GraphQL;
  */
 @CrossOrigin
 @RestController
+@ConditionalOnBean(GraphQL.class)
 public class GraphQLController {
 
   private final GraphQL graphql;
@@ -34,9 +36,9 @@ public class GraphQLController {
     long now = System.currentTimeMillis();
     
     ExecutionResult result = graphql.execute(ExecutionInput.newExecutionInput()
-                                    .query((String)aQuery.get("query"))
-                                    .variables((Map<String, Object>) aQuery.get("variables"))
-                                    .build());
+                                                           .query((String)aQuery.get("query"))
+                                                           .variables((Map<String, Object>) aQuery.get("variables"))
+                                                           .build());
     
     log.debug("{} [{}ms]",aQuery.get("query"),(System.currentTimeMillis()-now));
     

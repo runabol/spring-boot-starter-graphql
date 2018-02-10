@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,7 @@ import graphql.schema.GraphQLType;
  */
 @Configuration
 @ComponentScan(basePackages="com.creactiviti.spring.boot.starter.graphql")
+@ConditionalOnBean(QueryBuilder.class)
 public class GraphQLAutoConfiguration  {
   
   @Lazy
