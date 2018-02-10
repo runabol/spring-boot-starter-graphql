@@ -17,7 +17,7 @@ One way you could go about it is by using the traditional REST API approach:
 Request:
 
 ```
-GET /movies
+GET /movies?q=big
 ```
 
 Response:
@@ -27,8 +27,8 @@ Response:
 
   {
     "id":"1",
-    "title":"...",
-    "synopsis":"...",
+    "title":"Big",
+    "synopsis":"After a wish turns 12-year-old Josh Baskin (David Moscow) into a 30-year-old man (Tom Hanks)...",
     "duration":"..",
     "poster":"http://...",
     "cast":[
