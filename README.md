@@ -238,6 +238,37 @@ public class GetAllMoviesQuery implements QueryBuilder {
   }
 
 }
+
+@Component
+public class Movie implements TypeBuilder {
+  
+  public static final String NAME = "Movie";
+  public static final GraphQLTypeReference REF = Types.ref(NAME);
+
+  @Override
+  public GraphQLType build () {
+    return Types.objectTypeBuilder()
+                .name(NAME)
+                .field(Fields.stringField("title"))
+                .field(Fields.stringField("synopsis"))
+                .field(Fields.stringField("duration"))
+                .field(Fields.field("image")  
+                             .argument(Arguments.stringArgument("type"))
+                             .type(Image.REF)
+                             .dataFetcher((env) -> {
+                                
+                                // fetch the right image.
+                               
+                               // will NOT be executed if the user
+                               // did not ask for the image field!
+                                 
+                                return null;
+                             })
+                )
+                .build();
+  }
+
+}
 ```
 
 ```
