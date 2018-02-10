@@ -209,7 +209,53 @@ curl -s -X POST -H "Content-Type:application/json" -d '{"query":"{ hello }"}' ht
 
 OK, let's fetch some data now to make this more interesting:
 
+```
+@Component
+public class GetAllMoviesQuery implements QueryBuilder {
 
+  @Override
+  public void build (Builder aBuilder) {
+    aBuilder.field(Fields.field("getAllMovies")
+                         .type(Types.list(Movie.REF))
+                         .argument(Arguments.stringArgument("q"))
+                         .dataFetcher((env) -> {
+                           
+                           // in the real-world you would fetch 
+                           // the data from the database but 
+                           // we going to cheat here. The point
+                           // is that the data can come from anywhere:
+                           // database, another service, generated 
+                           // on the fly, etc.
+                           
+                           Map<String, Object> movie = new HashMap<>();
+                           
+                           movie.put("title", "Big");
+                           movie.put("synopsis", "After a wish turns 12-year-old Josh Baskin into a 30-year-old man...");
+                           movie.put("duration", "1h44m");
+                           
+                           return Arrays.asList(movie);
+                         }));
+  }
+
+}
+```
+
+```
+$ curl -s -X POST -H "Content-Type:application/json" -d '{"query":"{ getAllMovies { title synopsis } }"}' http://localhost:8080/graphql
+
+{
+  "data": {
+    "getAllMovies": [
+      {
+        "title": "Big",
+        "synopsis": "After a wish turns 12-year-old Josh Baskin into a 30-year-old man..."
+      }
+    ]
+  },
+  "errors": [],
+  "extensions": null
+}
+```
 
 
 
