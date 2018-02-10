@@ -10,7 +10,7 @@ This project is based on the fine work made by the folks behind the [graphql-jav
 
 In its most basic definition, GraphQL is a query language for your API.
 
-Say you have a database of movies and you decide that you want to expose it to app developers to build their apps. 
+Say you have a database of movies and you decide that you want to expose it to app developers through an API. 
 
 One way you could go about it is by using the traditional REST API approach:
 
