@@ -29,11 +29,12 @@ Response:
     "id":"1",
     "title":"Big",
     "synopsis":"After a wish turns 12-year-old Josh Baskin into a 30-year-old man...",
-    "duration":"..",
+    "duration":"1h44m",
     "poster":"http://...",
+    "genres":[...],
     "cast":[
         {
-           "name":"...",
+           "name":"Tom Hanks",
            "role":"..."
         }
     ]
@@ -41,10 +42,11 @@ Response:
   
   {
     "id":"2",
-    "title":"...",
-    "synopsis":"...",
-    "duration":"..",
+    "title":"The Big Lebowski",
+    "synopsis":"Jeff Bridges plays Jeff Lebowski who insists on being called "the Dude,"...",
+    "duration":"1h57m",
     "poster":"http://...",
+    "genres":[...],
     "cast":[
         {
            "name":"...",
@@ -60,7 +62,7 @@ Response:
 
 While this approach is totally workable it presents several challenges: 
 
-1. **Waste**. Let's say the app developers is building a screen that gives a movie listing with a thumbnail of the movie. Since he does not need the movie synopsis, cast etc. he is going to throw away a lot of data that had to be collected and tranferred over the wire. That's a lot of waste. One common way that people used to solve this problem is by introducing a `fields` query parameter to their API where you specify the fields you want to get back. This is an okay approach but comes with a significant amount of complexity to implement in the backend and does not scale very well to nested properties.
+1. **Waste**. Let's say the app developers is building a screen that gives a movie listing with a thumbnail of the movie. Since he does not need the movie synopsis, cast, genres etc. he is going to throw away a lot of data that had to be collected and tranferred over the wire. That's a lot of waste. One common way that people used to solve this problem is by introducing a `fields` query parameter to their API where you specify the fields you want to get back. This is an okay approach but comes with a significant amount of complexity to implement in the backend and does not scale very well to nested properties.
 
 2. **Lack of standardization**. REST-based APIs are extremely custom from one to the next which means that there is no standard way to interrogate them or explore them. You are at the mercy of the API author to write proper documenations and keep these up to date in order to understand how the API works. 
 
