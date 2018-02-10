@@ -262,7 +262,6 @@ public class Movie implements TypeBuilder {
                                // will NOT be executed if the user
                                // did not ask for the image field!
                                  
-                                return null;
                              })
                 )
                 .build();
