@@ -207,7 +207,9 @@ curl -s -X POST -H "Content-Type:application/json" -d '{"query":"{ hello }"}' ht
 
 # Your second GraphQL query
 
-TBD
+OK, let's get some data now to make this more interesting:
+
+
 
 # Mutations
 
