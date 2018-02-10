@@ -8,7 +8,7 @@ This project is based on the fine work made by the folks behind the [graphql-jav
 
 # GraphQL Primer
 
-In its most basic definition, GraphQL is a query language for your API.
+In its most basic definition, GraphQL is a **query language** for your API.
 
 Say you have a database of movies and you decide that you want to expose it to app developers through an API. 
 
