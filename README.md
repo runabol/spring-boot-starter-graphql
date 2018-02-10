@@ -6,6 +6,25 @@ This project is based on the fine work made by the folks behind the [graphql-jav
 
 **Note**: To support GraphQL's [subscriptions](http://graphql.org/blog/subscriptions-in-graphql-and-relay/) feature this module depends on Spring 5's WebFlux module and therefore Spring Boot 2.
 
+# GraphQL Primer
+
+In its most basic definition, GraphQL is a query language for your API.
+
+Say you have a database of movies and you decide that you want to expose it to app developers to build their apps. 
+
+One way you could go about it is by using the traditional REST API approach:
+
+```
+GET /movies
+```
+
+```
+[
+  {""}
+]
+``` 
+  
+
 # Usage
 
 Add the `spring-boot-starter-graphql` dependency to your Spring Boot app:
