@@ -185,7 +185,7 @@ public class HelloWorld implements QueryBuilder {
 
   @Override
   public void build (Builder aBuilder) {
-    aBuilder.field(Fields.field("hello")
+    aBuilder.field(Fields.field("hello")  // queries are just fields on the schema's built-in Query type.
                          .type(Scalars.GraphQLString)
                          .staticValue("Hi there!"));
   }
