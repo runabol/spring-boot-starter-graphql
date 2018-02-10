@@ -29,20 +29,38 @@ Response:
     "id":"1",
     "title":"...",
     "synopsis":"...",
-    "duration":".."
+    "duration":"..",
+    "poster":"http://...",
+    "cast":[
+        {
+           "name":"...",
+           "role":"..."
+        }
+    ]
   },
   
   {
     "id":"2",
     "title":"...",
     "synopsis":"...",
-    "duration":".."
+    "duration":"..",
+    "poster":"http://...",
+    "cast":[
+        {
+           "name":"...",
+           "role":"..."
+        }
+    ]
   }
   
   ...
   
 ]
 ``` 
+
+While this approach is totally workable it presents several challenges: 
+
+1. ***Waste***. 
   
 
 # Usage
