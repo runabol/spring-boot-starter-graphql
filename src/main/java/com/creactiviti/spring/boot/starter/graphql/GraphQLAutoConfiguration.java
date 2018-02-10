@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 
 import graphql.GraphQL;
 import graphql.schema.GraphQLObjectType;
@@ -24,21 +22,16 @@ import graphql.schema.GraphQLType;
  */
 @Configuration
 @ComponentScan(basePackages="com.creactiviti.spring.boot.starter.graphql")
-@ConditionalOnBean(QueryBuilder.class)
 public class GraphQLAutoConfiguration  {
   
-  @Lazy
   @Autowired(required=false)
   private List<QueryBuilder> queryBuilders = new ArrayList<>();
   
-  @Lazy
   @Autowired(required=false)
   private List<MutationBuilder> mutationBuilders = new ArrayList<>();
   
-  @Lazy
   @Autowired(required=false)
   private List<TypeBuilder> typeBuilders = new ArrayList<>();
-  
   
   @Bean
   public GraphQL graphql () {

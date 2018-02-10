@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +20,6 @@ import graphql.GraphQL;
  */
 @CrossOrigin
 @RestController
-@ConditionalOnBean(GraphQL.class)
 public class GraphQLController {
 
   private final GraphQL graphql;
@@ -33,6 +32,8 @@ public class GraphQLController {
   
   @PostMapping(value="/graphql", consumes="application/json", produces="application/json")
   public ExecutionResult graphql (@RequestBody Map<String,Object> aQuery) {
+    Assert.notNull(graphql, "graphql not defined");
+    
     long now = System.currentTimeMillis();
     
     ExecutionResult result = graphql.execute(ExecutionInput.newExecutionInput()
