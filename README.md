@@ -222,10 +222,10 @@ public class GetAllMoviesQuery implements QueryBuilder {
                            
                            // in the real-world you would probably 
                            // fetch the data from a database but 
-                           // but i'm keeping it simple for the example. 
-                           // The point is that the data can come from anywhere:
-                           // database, another service, generated 
-                           // on the fly, etc.
+                           // i'm keeping it simple for the example. 
+                           // The point is that the data can come from 
+                           // anywhere: database, another service, 
+                           // calculated on the fly, etc.
                            
                            Map<String, Object> movie = new HashMap<>();
                            
