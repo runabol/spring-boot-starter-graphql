@@ -84,7 +84,7 @@ While this approach is totally workable it presents several challenges:
 
 ## GraphQL to the rescue  
 
-Alternatively, we could use GraphQL to expose an API that would like something like this: 
+Alternatively, we could use GraphQL to expose an API that could like something like this: 
 
 ```
 POST /graphql
