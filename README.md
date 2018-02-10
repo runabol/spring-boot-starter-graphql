@@ -14,13 +14,33 @@ Say you have a database of movies and you decide that you want to expose it to a
 
 One way you could go about it is by using the traditional REST API approach:
 
+Request:
+
 ```
 GET /movies
 ```
 
+Response:
+
 ```
 [
-  {""}
+
+  {
+    "id":"1",
+    "title":"...",
+    "synopsis":"...",
+    "duration":".."
+  },
+  
+  {
+    "id":"2",
+    "title":"...",
+    "synopsis":"...",
+    "duration":".."
+  }
+  
+  ...
+  
 ]
 ``` 
   
