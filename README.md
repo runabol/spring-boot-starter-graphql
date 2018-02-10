@@ -28,7 +28,7 @@ Response:
   {
     "id":"1",
     "title":"Big",
-    "synopsis":"After a wish turns 12-year-old Josh Baskin (David Moscow) into a 30-year-old man (Tom Hanks)...",
+    "synopsis":"After a wish turns 12-year-old Josh Baskin into a 30-year-old man...",
     "duration":"..",
     "poster":"http://...",
     "cast":[
