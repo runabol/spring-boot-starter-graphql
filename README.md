@@ -6,7 +6,9 @@ This project is based on the fine work made by the folks behind the [graphql-jav
 
 **Note**: To support GraphQL's [subscriptions](http://graphql.org/blog/subscriptions-in-graphql-and-relay/) feature this module depends on Spring 5's WebFlux module and therefore Spring Boot 2.
 
-# Maven
+# Usage
+
+Add the `spring-boot-starter-graphql` dependency to your Spring Boot app:
 
 ```
 <dependency>
@@ -32,7 +34,7 @@ This project is based on the fine work made by the folks behind the [graphql-jav
 
 # Kicking the tires
 
-`spring-boot-starter-graphql` comes with a built in `ping` query to test that everything is fine:
+`spring-boot-starter-graphql` comes with a built-in `ping` query to test that everything is fine:
 
 ```
 curl -X POST -H "Content-Type:application/json" -d '{"query":"{ping}"}' http://localhost:8080/graphql
