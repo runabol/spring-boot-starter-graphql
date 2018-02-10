@@ -123,7 +123,7 @@ POST /graphql
 
 What just happened? 
 
-1. **Waste**. Since we only want to get the movie `id` and `title` for each movie, that's exactly what we are getting back. The most of collecting and transferring the data is completely eliminated.
+1. **Waste**. Since we only want to get the movie `id`, `title` and the image URL for each movie, that's exactly what we are getting back. The most of collecting and transferring the data is completely eliminated.
 
 2. **Lack of standardization**. The GraphQL [spec](http://facebook.github.io/graphql/October2016/) provides a commong ground for agreement between API authors and client consumers. This opens the door for tools such as [GraphiQL](https://github.com/graphql/graphiql) and [Voyager](https://github.com/APIs-guru/graphql-voyager) to interrogate GraphQL-based APIs.
 
