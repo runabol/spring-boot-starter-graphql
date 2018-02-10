@@ -238,7 +238,9 @@ public class GetAllMoviesQuery implements QueryBuilder {
   }
 
 }
+```
 
+```
 @Component
 public class Movie implements TypeBuilder {
   
