@@ -1,6 +1,6 @@
 # Spring Boot Starter GraphQL
 
-The aim of this project is to get you up to speed with GraphQL running in your Spring Boot app with minimal hassle.
+The aim of this project is to get you easily started with GraphQL running in your Spring Boot based apps.
 
 This project is based on the fine work made by the folks behind the [graphql-java](https://github.com/graphql-java/graphql-java) library.
 
