@@ -60,7 +60,7 @@ Response:
 
 While this approach is totally workable it presents several challenges: 
 
-1. ***Waste***. 
+1. **Waste**. 
   
 
 # Usage
