@@ -14,15 +14,9 @@ Say you have a database of movies and you decide that you want to expose it to a
 
 One way you could go about it is by using the traditional REST API approach:
 
-Request:
-
 ```
 GET /movies?q=big
-```
-
-Response:
-
-```
+ 
 [
 
   {
@@ -71,6 +65,33 @@ While this approach is totally workable it presents several challenges:
 4. **Taxing the Backend**. When you create the first version of your API it's typically nice and fast. But as you introduce more database joins, more external calls required for your response and more calculations things start slowing down. This impacts not just the new features of your apps that need the new pieces of data but any festures that use the API.
 
 ## GraphQL to the rescue  
+
+Alternatively, we could use GraphQL to expose an API that would like something like this: 
+
+```
+POST /graphql
+
+{
+   getAllMovies {
+      id
+      title
+   }
+}
+```
+
+```
+[
+
+  {
+    "id":"1",
+    "title":"Big"
+  },
+  
+  {
+    "id":"2",
+    "title":"The Big Lebowski",
+  }
+```
 
 # Usage
 
