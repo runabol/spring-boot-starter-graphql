@@ -345,5 +345,42 @@ Both queries and mutations make use of the traditional request/response model. C
 
 Subscriptions on the other hand, are publish/subsribe based mechanism: the server published some sort of notifications that clients can subscribe to. 
 
+```
+@Component
+public class MovieAddedSubscription implements SubscriptionBuilder {
   
+  private static final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+  
+  @Override
+  public void build (Builder aBuilder) {
+    aBuilder.field(Fields.field("movieAdded")
+                         .type(Movie.REF)
+                         .dataFetcher((env)->Flux.create ((emitter) -> {
+                           
+                           // use a scheduled executor to simulate an 
+                           // event happening on another thread event 
+                           // second.
+                           
+                           executor.scheduleAtFixedRate(() -> onMovieAdded(emitter), 1, 1, TimeUnit.SECONDS);
+                           
+                         })));
+  }
+  
+  private void onMovieAdded (FluxSink<Object> aEmitter) {
+    Map<String, String> movie = new HashMap<>();
+    movie.put("id", UUID.randomUUID().toString().replace("-",""));
+    movie.put("title", "...");
+    aEmitter.next(movie);
+  }
+
+}
+```
+
+```
+$ curl -s -X POST -H "Content-Type:application/json" -H "Accept:text/event-stream" -d '{"query":"subscription { movieAdded { id title } }"}' http://localhost:8080/graphql
+
+data:{"data":{"id":"ef006c125e61435d965bbd9492d00990","title":"..."},"errors":[],"extensions":null}
+
+data:{"data":{"id":"160ac99f81f740589b6062f5cb70915c","title":"..."},"errors":[],"extensions":null}
+```  
 
