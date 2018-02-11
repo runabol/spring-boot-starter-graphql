@@ -2,9 +2,9 @@ package com.creactiviti.spring.boot.starter.graphql;
 
 import java.util.Map;
 
+import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import graphql.ExecutionInput;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
-import reactor.core.publisher.Flux;
 
 /**
  * @author Arik Cohen
@@ -32,18 +31,16 @@ public class GraphQLController {
   }
   
   @PostMapping(value="/graphql", consumes="application/json", produces="text/event-stream")
-  public Flux<?> reactiveGrapql (@RequestBody Map<String,Object> aQuery) {
-    return graphqlInternal(aQuery).getData();
+  public Publisher<?> reactiveGrapql (@RequestBody Map<String,Object> aQuery) {
+    return graphql(aQuery).getData();
   }
   
   @PostMapping(value="/graphql", consumes="application/json", produces="application/json")
-  public ExecutionResult graphql (@RequestBody Map<String,Object> aQuery) {
-    return graphqlInternal(aQuery);
+  public ExecutionResult simpleGraphql (@RequestBody Map<String,Object> aQuery) {
+    return graphql(aQuery);
   }
   
-  private ExecutionResult graphqlInternal (@RequestBody Map<String,Object> aQuery) {
-    Assert.notNull(graphql, "graphql not defined");
-    
+  private ExecutionResult graphql (@RequestBody Map<String,Object> aQuery) {
     long now = System.currentTimeMillis();
     
     ExecutionResult result = graphql.execute(ExecutionInput.newExecutionInput()
