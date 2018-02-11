@@ -84,7 +84,7 @@ While this approach is totally workable it presents several challenges:
 
 ## GraphQL to the rescue  
 
-Alternatively, we could use GraphQL to expose an API that could like something like this: 
+Alternatively, using GraphQL we expose a single endpoint (typically `/graphql`) which accepts a GraphQL query from the client and responds with the requested data. Here's an example: 
 
 ```
 POST /graphql
