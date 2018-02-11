@@ -15,6 +15,8 @@ import graphql.ExecutionResult;
 import graphql.GraphQL;
 
 /**
+ * The API endpoint for GraphQL operations.
+ * 
  * @author Arik Cohen
  * @since Feb 08, 2018
  */
