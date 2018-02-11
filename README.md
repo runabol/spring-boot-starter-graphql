@@ -391,4 +391,6 @@ data:{"data":{"id":"160ac99f81f740589b6062f5cb70915c","title":"..."},"errors":[]
 
 **Note:** Make sure to use the `Accept:text/event-stream` when subscribing.
 
+# License
 
+Version 2.0 of the Apache License.
