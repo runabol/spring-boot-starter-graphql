@@ -31,6 +31,9 @@ public class GraphQLAutoConfiguration  {
   private List<MutationBuilder> mutationBuilders = new ArrayList<>();
   
   @Autowired(required=false)
+  private List<SubscriptionBuilder> subscriptionBuilders = new ArrayList<>();
+  
+  @Autowired(required=false)
   private List<TypeBuilder> typeBuilders = new ArrayList<>();
   
   @Bean
@@ -42,9 +45,13 @@ public class GraphQLAutoConfiguration  {
     
     // build the Mutation (Write) portion of the GraphQL schema    
     
-    Builder mutationBuilder = GraphQLObjectType.newObject().name("MutationQuery");
+    Builder mutationBuilder = GraphQLObjectType.newObject().name("Mutation");
     
     mutationBuilders.forEach(mb->mb.build(mutationBuilder));
+    
+    Builder subscriptionBuilder = GraphQLObjectType.newObject().name("Subscription");
+    
+    subscriptionBuilders.forEach(sb->sb.build(subscriptionBuilder));
     
     // build all types
     
@@ -60,6 +67,10 @@ public class GraphQLAutoConfiguration  {
     
     if(mutationBuilders.size() > 0) {
       schemaBuilder.mutation(mutationBuilder);
+    }
+    
+    if(subscriptionBuilders.size() > 0) {
+      schemaBuilder.subscription(subscriptionBuilder);
     }
     
     return GraphQL.newGraphQL(schemaBuilder.additionalTypes(new HashSet<>(types)).build()).build();

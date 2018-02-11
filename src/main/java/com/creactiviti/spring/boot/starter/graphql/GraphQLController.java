@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import graphql.ExecutionInput;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
+import reactor.core.publisher.Flux;
 
 /**
  * @author Arik Cohen
@@ -30,8 +31,17 @@ public class GraphQLController {
     graphql = aGraphQL;
   }
   
+  @PostMapping(value="/graphql", consumes="application/json", produces="text/event-stream")
+  public Flux<?> reactiveGrapql (@RequestBody Map<String,Object> aQuery) {
+    return graphqlInternal(aQuery).getData();
+  }
+  
   @PostMapping(value="/graphql", consumes="application/json", produces="application/json")
   public ExecutionResult graphql (@RequestBody Map<String,Object> aQuery) {
+    return graphqlInternal(aQuery);
+  }
+  
+  private ExecutionResult graphqlInternal (@RequestBody Map<String,Object> aQuery) {
     Assert.notNull(graphql, "graphql not defined");
     
     long now = System.currentTimeMillis();
@@ -44,6 +54,6 @@ public class GraphQLController {
     log.debug("{} [{}ms]",aQuery.get("query"),(System.currentTimeMillis()-now));
     
     return result;
-  }
+  }  
   
 }

@@ -341,5 +341,9 @@ $ curl -s -X POST -H "Content-Type:application/json" -d '{"query":"mutation { ad
 
 # Subscriptions
 
-TBD
+Both queries and mutations make use of the traditional request/response model. Client makes a request with the specifics of what it wants to get back and the server responds appropriately. 
+
+Subscriptions on the other hand, are publish/subsribe based mechanism: the server published some sort of notifications that clients can subscribe to. 
+
+  
 
