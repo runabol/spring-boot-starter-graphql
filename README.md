@@ -345,6 +345,8 @@ Both queries and mutations make use of the traditional request/response model. C
 
 Subscriptions on the other hand, are publish/subsribe based mechanism: the server published some sort of notifications that clients can subscribe to. 
 
+For example we can let clients know whenever a movie was added:
+
 ```
 @Component
 public class MovieAddedSubscription implements SubscriptionBuilder {
@@ -382,5 +384,11 @@ $ curl -s -X POST -H "Content-Type:application/json" -H "Accept:text/event-strea
 data:{"data":{"id":"ef006c125e61435d965bbd9492d00990","title":"..."},"errors":[],"extensions":null}
 
 data:{"data":{"id":"160ac99f81f740589b6062f5cb70915c","title":"..."},"errors":[],"extensions":null}
+
+... and on every second
+
 ```  
+
+**Note:** Make sure to use the `Accept:text/event-stream` when subscribing.
+
 
